@@ -1,30 +1,20 @@
-# list comprehension
-numbers = [1, 2, 3]
-# new_list = [n**2 for n in numbers]
-# print(new_list)
+import pandas as pd
+
+data = pd.read_csv("nato_phonetic_alphabet.csv")
+print(data)
 
 
-# name = "douglas"
+nato_alpha = {row.letter: row.code for (index, row) in data.iterrows()}
+# print(nato_alpha)
 
-# new_list = [letter for letter in name]
-# print(new_list)
+text = input("enter a string to covert :").upper()
 
+list_text = []
+for i in text:
+    list_text.append(i)
 
-# double = [n * 2 for n in range(1, 5)]
-# print(double)
+# print(list_text)
 
-# list_new = [n**2 for n in range(1, 6)]
+new_dict = {key: value for key, value in nato_alpha.items() if key in list_text}
 
-# names = ["Joe", "Angela", "Caroline", "sebastian", "Elanor"]
-
-# short_names = [name.upper() for name in names if len(name) > 5]
-# print(short_names)
-
-# list = [9, 0, 32, 8, 2, 8, 64, 29, 42, 99]
-
-# list_of_strings = input().split(",")
-
-# numbers = [int(x) for x in list_of_strings]
-
-# result = [n for n in numbers if n % 2 == 0]
-# print(result)
+print(new_dict)
